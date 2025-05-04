@@ -1,7 +1,8 @@
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { Command } from "cmdk";
 import { useEffect, Dispatch, SetStateAction, FC, useState } from "react";
-import { FiEye, FiPlus } from "react-icons/fi";
+import { FiEye, FiLink, FiPhone, FiPlus } from "react-icons/fi";
+import { GoSignOut } from "react-icons/go";
 interface tProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -30,7 +31,6 @@ export const CommandMenu: FC<tProps> = ({ open, setOpen }) => {
       onClick={() => setOpen(false)}
     >
       <DialogTitle hidden={true}></DialogTitle>
-      {/* <DialogDescription hidden={true}></DialogDescription> */}
       <div
         onClick={(ev) => ev.stopPropagation()}
         className="bg-white rounded-lg shadow-xl border-stone-300 border overflow-hidden w-full max-w-lg mx-auto mt-12 "
@@ -56,6 +56,23 @@ export const CommandMenu: FC<tProps> = ({ open, setOpen }) => {
               See Org Chart
             </Command.Item>
           </Command.Group>
+          <Command.Group
+            heading="Integrations"
+            className="text-sm mb-3 text-stone-400"
+          >
+            <Command.Item className="flex cursor-pointer transition-colors p-2 text-sm text-stone-950 hover:bg-stone-200 rounded items-center gap-2">
+              <FiLink />
+              Link Services
+            </Command.Item>
+            <Command.Item className="flex cursor-pointer transition-colors p-2 text-sm text-stone-950 hover:bg-stone-200 rounded items-center gap-2">
+              <FiPhone />
+              Contact Support
+            </Command.Item>
+          </Command.Group>
+          <div className="flex cursor-pointer p-2 text-sm bg-stone-950 text-white rounded items-center gap-2">
+            <GoSignOut />
+            Sign Out
+          </div>
         </Command.List>
       </div>
     </Command.Dialog>
